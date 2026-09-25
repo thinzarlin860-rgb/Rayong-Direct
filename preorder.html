@@ -1,28 +1,50 @@
 <!doctype html>
-<html lang="my"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pre-Order | Rayong Direct</title><link rel="stylesheet" href="style.css"></head>
+<html lang="my">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>Pre-Order | Rayong Direct</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<header><div class="top">🇹🇭 Rayong → 🇲🇲 Myanmar · Pre-Order</div>
-<nav><a class="brand" href="index.html"><img src="assets/rayong-direct.jpg"><b>Rayong Direct</b></a><a class="btn" href="index.html">← ပင်မစာမျက်နှာ</a></nav></header>
-<main class="formwrap">
-<h1>🛒 Pre-Order မှာယူရန်</h1>
-<p>အောက်ပါအချက်အလက်များကို ဖြည့်ပြီး မှာယူမှုတင်ပါ။</p><div class="quickcontact">📱 <a href="tel:+66660460200">+66 6604 60200</a> · 💚 <a href="https://line.me/R/ti/p/~60460200">LINE 60460200</a> · 💬 <a href="https://www.facebook.com/share/1MH38YdDNH/" target="_blank">Facebook</a></div>
-<form id="orderForm">
-<label>အမည် *<input required name="name" placeholder="သင့်အမည်"></label>
-<label>ဖုန်းနံပါတ် *<input required name="phone" placeholder="09xxxxxxxxx"></label>
-<label>မြို့ / ပို့ဆောင်မည့်နေရာ *<input required name="city" placeholder="ဥပမာ - ရန်ကုန်"></label>
-<label>မှာယူလိုသောပစ္စည်း *<textarea required name="product" placeholder="ပစ္စည်းအမည် / Link / Screenshot အကြောင်းအရာ"></textarea></label>
-<label>အရေအတွက် *<input required name="qty" type="number" min="1" value="1"></label>
-<label>မှတ်ချက်<textarea name="note" placeholder="အရောင်၊ အရွယ်အစား စသည်"></textarea></label>
-<button class="bigbtn" type="submit">မှာယူမှုတင်မည်</button>
-<p id="result" class="result"></p>
-</form>
+<header class="site-header">
+  <div class="topbar">🇹🇭 Rayong → 🇲🇲 Myanmar · Pre-Order</div>
+  <nav class="nav wrap">
+    <a class="brand" href="index.html"><img src="assets/rayong-direct.jpg" alt="Rayong Direct"><span>Rayong<br>Direct</span></a>
+    <a class="goldbtn small" href="index.html">← ပင်မစာမျက်နှာ</a>
+  </nav>
+</header>
+<main class="form-page">
+  <div class="wrap narrow">
+    <div class="section-title"><span>📋</span><h1>Pre-Order မှာယူရန်</h1></div>
+    <p class="form-intro">မှာယူလိုသည့်ပစ္စည်းအချက်အလက်များကို ဖြည့်ပြီး WhatsApp မှတစ်ဆင့် ပို့နိုင်ပါတယ်။</p>
+    <form id="orderForm" class="orderform">
+      <label>အမည်<input id="name" required placeholder="သင့်အမည်"></label>
+      <label>ဖုန်းနံပါတ်<input id="phone" required placeholder="09xxxxxxxxx / +66xxxxxxxxx"></label>
+      <label>ပစ္စည်းအမည်<input id="product" required placeholder="ဥပမာ - Skincare / အစားအသောက်"></label>
+      <label>အရေအတွက်<input id="qty" required placeholder="ဥပမာ - 10 ခု"></label>
+      <label>ပစ္စည်းပုံ / Link (ရှိလျှင်)<input id="link" placeholder="Facebook / TikTok / Shopee link"></label>
+      <label>မှတ်ချက်<textarea id="note" placeholder="အရောင်၊ အရွယ်အစား၊ မော်ဒယ် စသည်တို့"></textarea></label>
+      <button class="goldbtn submit" type="submit">📲 WhatsApp မှာယူမှု ပို့ရန်</button>
+    </form>
+    <div class="quickcontact">
+      <b>တိုက်ရိုက်ဆက်သွယ်ရန်</b><br>
+      📱 <a href="tel:+66660460200">+66 6604 60200</a> · 💬 <a href="https://www.facebook.com/share/1MH38YdDNH/" target="_blank" rel="noopener">Facebook</a> · 🟢 <a href="https://line.me/R/ti/p/~60460200" target="_blank" rel="noopener">LINE 60460200</a> · 🟣 <a href="viber://chat?number=%2B66617533941">Viber</a>
+    </div>
+  </div>
 </main>
+<footer>© 2026 Rayong Direct</footer>
 <script>
-document.getElementById('orderForm').addEventListener('submit',e=>{
- e.preventDefault();
- const d=new FormData(e.target);
- const msg=`Rayong Direct Pre-Order%0Aအမည်: ${d.get('name')}%0Aဖုန်း: ${d.get('phone')}%0Aမြို့: ${d.get('city')}%0Aပစ္စည်း: ${d.get('product')}%0Aအရေအတွက်: ${d.get('qty')}%0Aမှတ်ချက်: ${d.get('note')||'-'}`;
- document.getElementById('result').innerHTML=`မှာယူမှုအချက်အလက် ပြင်ဆင်ပြီးပါပြီ။ <a href="https://wa.me/?text=${msg}">WhatsApp ဖြင့် ပို့ရန်</a> (နောက်ပိုင်းတွင် သင့် Messenger/Viber နံပါတ်နဲ့ ချိတ်နိုင်ပါတယ်)`;
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const product=document.getElementById('product').value.trim();
+  const qty=document.getElementById('qty').value.trim();
+  const link=document.getElementById('link').value.trim();
+  const note=document.getElementById('note').value.trim();
+  const msg=`Rayong Direct Pre-Order%0A%0Aအမည်: ${encodeURIComponent(name)}%0Aဖုန်း: ${encodeURIComponent(phone)}%0Aပစ္စည်း: ${encodeURIComponent(product)}%0Aအရေအတွက်: ${encodeURIComponent(qty)}%0ALink: ${encodeURIComponent(link || '-')}%0Aမှတ်ချက်: ${encodeURIComponent(note || '-')}`;
+  window.location.href='https://wa.me/66660460200?text='+msg;
 });
-</script></body></html>
+</script>
+</body></html>
